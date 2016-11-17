@@ -1,37 +1,16 @@
-<%= form_for(post) do |f| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="container">
 
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+  <% if @post.image %>
+  <%=  image_tag  @post.image %>
+  <% end %>
+  <%= simple_form_for(@post, html: { class: 'form-horizontal' }) do |form| %>
+    <%= form.input :film, label: 'Votre film', error: 'Vous devez ajouter un titre de film', required: true %>
+    <%= form.input :citation, label: 'Votre citation', error: 'Vous devez ajouter une citation', required: true %>
+    <%= form.input :realisateur, label: 'Le réalisateur', error: 'Vous devez ajouter un réalisateur', required: true %>
+    <%= form.input :tags_to_s, label: 'Vos tags' %>
+    <%= form.file_field :image, multiple: false %>
+    <%= form.button :submit %>
+
   <% end %>
 
-  <div class="field">
-    <%= f.label :film %>
-    <%= f.text_field :film, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :citation %>
-    <%= f.text_area :citation, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :realisateur %>
-    <%= f.text_field :realisateur, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image, multiple: false %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

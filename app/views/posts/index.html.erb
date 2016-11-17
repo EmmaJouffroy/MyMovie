@@ -19,7 +19,14 @@
         <td><%= post.film %></td>
         <td><%= post.citation %></td>
         <td><%= post.realisateur %></td>
-        <td><%= post.image %></td>
+
+
+        <td><% if post.image.file.nil? == false %>
+        <%= image_tag post.image, width: 100%>
+            <% else %>
+                <td>No Pic</td>
+                <% end %></td>
+
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
