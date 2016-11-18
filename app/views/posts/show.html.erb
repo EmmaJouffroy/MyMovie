@@ -18,7 +18,7 @@
 <p>
   <strong>Vos tags:</strong>
   <% @post.tags.each do |t| %>
-  <%= t.title %>
+    <%= link_to t.title, post_tag_path(t) %>
   <% end %>
 </p>
 

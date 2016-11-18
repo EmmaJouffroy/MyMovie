@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<table>
+  <strong>Films relatifs à "<%= @tag.title %>":</strong>
+  <ul>
+    <% @posts.each do |post| %>
+      <li><%= link_to post.film, post_path(post) %></li>
+    <% end %>
+  </ul>
+</table>

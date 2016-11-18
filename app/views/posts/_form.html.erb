@@ -3,6 +3,7 @@
   <% if @post.image %>
   <%=  image_tag  @post.image %>
   <% end %>
+  
   <%= simple_form_for(@post, html: { class: 'form-horizontal' }) do |form| %>
     <%= form.input :film, label: 'Votre film', error: 'Vous devez ajouter un titre de film', required: true %>
     <%= form.input :citation, label: 'Votre citation', error: 'Vous devez ajouter une citation', required: true %>

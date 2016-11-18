@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   resources :posts
+  get 'posts/tag/:tag_id' => 'posts#tag', as: :post_tag
+
   devise_for :users
   get 'pages/home'
 
   get 'pages/faq'
-
   get 'pages/about'
-root "pages#home"
+  root "pages#home"
 
 authenticated :user do
   root :to => "posts#index"
